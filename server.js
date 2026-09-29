@@ -10,7 +10,12 @@ const app = express();
 app.use(cors());
 app.use(rateLimit({ windowMs: 60_000, max: 5 })); // 5 requests/min per IP
 
-const ALLOWED = ["youtube.com", "www.youtube.com", "youtu.be", "tiktok.com", "www.tiktok.com", "vm.tiktok.com"];
+const ALLOWED = [
+    "youtube.com", "www.youtube.com", "youtu.be",
+    "tiktok.com", "www.tiktok.com", "vm.tiktok.com",
+    "facebook.com", "www.facebook.com", "fb.watch", "m.facebook.com",
+    "instagram.com", "www.instagram.com"
+];
 
 app.get("/download", async (req, res) => {
     const { url, format } = req.query; // format = mp3 | mp4
